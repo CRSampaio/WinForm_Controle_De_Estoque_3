@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinForm_Controle_De_Estoque.Dados;
+using WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters;
 using WinForm_Controle_De_Estoque.db_05579_1_C_1_2017DataSetTableAdapters;
 
 namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
@@ -24,7 +26,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            btnCancelar_Click(sender e); // para limpar informações pré existentes no formulário
+            btnCancelar_Click(null, null); // para limpar informações pré existentes no formulário
             CarregaGridItens();
             PedidoTableAdapter taPedido = new PedidoTableAdapter();
             vid_VendaAtual = (int)taPedido.UltimoPedido() + 1;
@@ -132,9 +134,95 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
             vUsuario = Properties.Settings.Default.NomeUsuarioLogado.ToString();
         }
 
+        private void txtQtdVenda_Leave(object sender, EventArgs e)
+        {
+            if (txtQtdVenda.Text == "") txtQtdVenda.Text = "1";
+            vQuantidadeDigitada = Convert.ToInt16(txtQtdVenda.Text);
+            if (vQuantidadeDigitada > vSaldoAtual)
+            {
+                MessageBox.Show("Saldo insuficiente, só existem " + vSaldoAtual.ToString() + "disponível.");
+                txtQtdVenda.Focus();
+                txtQtdVenda.SelectAll(); // seleciona todo o texto da textbox
+            }
+        }
+
+        private void txtCodigo_Leave(object sender, EventArgs e)
+        {
+            if (txtCodigo.Text != "")
+            {
+                ProdutoTableAdapter taProduto = new ProdutoTableAdapter();
+                DataSet_Dados_do_Banco.ProdutoDataTable dtProduto = new DataSet_Dados_do_Banco.ProdutoDataTable();
+
+                dtProduto = (DataSet_Dados_do_Banco.ProdutoDataTable)taProduto.Procura_Produto(int.Parse(txtCodigo.Text));
+
+                if (dtProduto.Rows.Count == 0)
+                {
+                    MessageBox.Show("Código não cadastrado");
+                    txtCodigo.Focus();
+                }
+                else
+                {
+                    lblDescricaoProduto.Text = dtProduto.Rows[0]["pro_Descricao"].ToString();
+                    txtValorUnit.Text = dtProduto.Rows[0]["pro_Valor"].ToString();
+                    vSaldoAtual = (int)dtProduto.Rows[0]["pro_QtdeEstoque"];
+                    txtQtdVenda.Focus();
+                }
+            }
+        }
+
+        private void frmCadVendas_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Para que o foco seja mudado com a tecla <Enter>
+            // Obs.: Alterar a propriedade KeyPreview do formulário para True
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendKeys.Send("{Tab}");
+            }
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            if (grbPesquisaPedido.Visible == true)
+                grbPesquisaPedido.Visible = false;
+            else
+            {
+                grbPesquisaPedido.Visible = true;
+                txtNumPedidoPesq.Focus();
+            }
+            btnCancelar_Click(sender, e);
+            CarregaGridItens();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Limpa_Campos_Pedido();
+            grbPedido.Enabled = false;
+            grbItens.Enabled = false;
+            btnGravar.Enabled = false;
+            btnCancelar.Visible = false;
+            btnNovo.Enabled = true;
+            // Limpa os itens da tabela temp
+            Item_TempTableAdapter taItem_Temp = new Item_TempTableAdapter();
+            taItem_Temp.Limpa_Itens(vld_VendaAtual, vUsuario);
+        }
+
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
+        }
+        
+
+        private void txtValorUnit_Leave(object sender, EventArgs e)
+        {
+            vValorUnitDigitado = Convert.ToDouble(txtValorUnit.Text);
+            vValorTotalProduto = vQuantidadeDigitada * vValorUnitDigitado;
+            lblTotalProduto.Text = (vValorTotalProduto).ToString("###,##0.00");
+            btnAdicionarItem.Focus();
         }
 
         private void btnAdicionarItem_Click(object sender, EventArgs e)
@@ -161,19 +249,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
             Limpa_Campos_Item();
         }
         
-        private void txtQtdVenda_Leave(object sender, EventArgs e)
-        {
-            if (txtQtdVenda.Text == "") txtQtdVenda.Text = "1";
-            vQuantidadeDigitada = Convert.ToInt16(txtQtdVenda.Text);
-            if (vQuantidadeDigitada > vSaldoAtual)
-            {
-                MessageBox.Show("Saldo insuficiente, só existem " + vSaldoAtual.ToString() + "disponível.");
-                txtQtdVenda.Focus();
-                txtQtdVenda.SelectAll(); // seleciona todo o texto da textbox
-            }
-        }
-
-        private void txtValorUNit_
+        
 
 
 
