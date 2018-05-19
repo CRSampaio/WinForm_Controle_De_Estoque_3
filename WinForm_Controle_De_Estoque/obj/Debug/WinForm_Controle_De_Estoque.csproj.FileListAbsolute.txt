@@ -72,3 +72,4 @@ C:\Users\ManutencaoEtec\Desktop\WinForm_Controle_De_Estoque\WinForm_Controle_De_
 C:\Users\ManutencaoEtec\Desktop\WinForm_Controle_De_Estoque\WinForm_Controle_De_Estoque\obj\Debug\RdlCompile.cache
 C:\Users\ManutencaoEtec\Desktop\WinForm_Controle_De_Estoque\WinForm_Controle_De_Estoque\obj\Debug\RdlCompile.compiled
 C:\Users\ManutencaoEtec\Desktop\WinForm_Controle_De_Estoque\WinForm_Controle_De_Estoque\obj\Debug\WinForm_Controle_De_Estoque.csprojResolveAssemblyReference.cache
+C:\Users\ManutencaoEtec\Desktop\WinForm_Controle_De_Estoque\WinForm_Controle_De_Estoque\obj\Debug\WinForm_Controle_De_Estoque.Formularios.Cadastros.frmCadVendas.resources

@@ -54,11 +54,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet_Dados_do_Banco.xsd</DependentUpon>
     </Compile>
-    <Compile Include="db_05579_1_C_1_2017DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>db_05579_1_C_1_2017DataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,17 +165,6 @@
     </None>
     <None Include="Dados\DataSet_Dados_do_Banco.xss">
       <DependentUpon>DataSet_Dados_do_Banco.xsd</DependentUpon>
-    </None>
-    <None Include="db_05579_1_C_1_2017DataSet.xsc">
-      <DependentUpon>db_05579_1_C_1_2017DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="db_05579_1_C_1_2017DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>db_05579_1_C_1_2017DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="db_05579_1_C_1_2017DataSet.xss">
-      <DependentUpon>db_05579_1_C_1_2017DataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

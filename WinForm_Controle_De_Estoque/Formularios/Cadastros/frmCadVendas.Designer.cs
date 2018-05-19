@@ -45,34 +45,35 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnBuscarProduto = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.btnFechar = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnLocalizaPedido = new System.Windows.Forms.Button();
             this.btnAdicionarItem = new System.Windows.Forms.Button();
             this.btnRemoverItem = new System.Windows.Forms.Button();
             this.dgvItem = new System.Windows.Forms.DataGridView();
-            this.txtQtdVenda = new System.Windows.Forms.TextBox();
-            this.txtValorUnit = new System.Windows.Forms.TextBox();
-            this.grbPedido = new System.Windows.Forms.GroupBox();
-            this.dtpDataVenda = new System.Windows.Forms.DateTimePicker();
-            this.lblNumeroPedido = new System.Windows.Forms.Label();
-            this.grbItens = new System.Windows.Forms.GroupBox();
-            this.lblDescricaoProduto = new System.Windows.Forms.Label();
-            this.lblTotalProduto = new System.Windows.Forms.Label();
-            this.lblTotalPedido = new System.Windows.Forms.Label();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grbVenda = new System.Windows.Forms.GroupBox();
+            this.txtQtdVenda = new System.Windows.Forms.TextBox();
+            this.txtValorUnit = new System.Windows.Forms.TextBox();
+            this.grbPedido = new System.Windows.Forms.GroupBox();
+            this.lblNumeroPedido = new System.Windows.Forms.Label();
+            this.dtpDataVenda = new System.Windows.Forms.DateTimePicker();
+            this.grbItens = new System.Windows.Forms.GroupBox();
+            this.lblTotalPedido = new System.Windows.Forms.Label();
+            this.lblTotalProduto = new System.Windows.Forms.Label();
+            this.lblDescricaoProduto = new System.Windows.Forms.Label();
+            this.grbPesquisaPedido = new System.Windows.Forms.GroupBox();
             this.txtNumPedidoPesq = new System.Windows.Forms.TextBox();
             this.ErrErro = new System.Windows.Forms.ErrorProvider(this.components);
+            this.categoriaTableAdapter1 = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.CategoriaTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItem)).BeginInit();
             this.grbPedido.SuspendLayout();
             this.grbItens.SuspendLayout();
-            this.grbVenda.SuspendLayout();
+            this.grbPesquisaPedido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrErro)).BeginInit();
             this.SuspendLayout();
             // 
@@ -183,6 +184,7 @@
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(71, 20);
             this.txtCodigo.TabIndex = 10;
+            this.txtCodigo.Leave += new System.EventHandler(this.txtCodigo_Leave);
             // 
             // txtObservacao
             // 
@@ -208,6 +210,7 @@
             this.btnCancelar.TabIndex = 14;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnBuscarProduto
             // 
@@ -229,23 +232,25 @@
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
-            // button2
+            // btnPesquisar
             // 
-            this.button2.Location = new System.Drawing.Point(113, 423);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "Pesquisar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Location = new System.Drawing.Point(113, 423);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisar.TabIndex = 17;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
-            // button3
+            // btnFechar
             // 
-            this.button3.Location = new System.Drawing.Point(511, 423);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Fechar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnFechar.Location = new System.Drawing.Point(511, 423);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(75, 23);
+            this.btnFechar.TabIndex = 19;
+            this.btnFechar.Text = "Fechar";
+            this.btnFechar.UseVisualStyleBackColor = true;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // btnGravar
             // 
@@ -300,99 +305,6 @@
             this.dgvItem.Size = new System.Drawing.Size(544, 129);
             this.dgvItem.TabIndex = 23;
             // 
-            // txtQtdVenda
-            // 
-            this.txtQtdVenda.Location = new System.Drawing.Point(307, 34);
-            this.txtQtdVenda.Name = "txtQtdVenda";
-            this.txtQtdVenda.Size = new System.Drawing.Size(59, 20);
-            this.txtQtdVenda.TabIndex = 24;
-            // 
-            // txtValorUnit
-            // 
-            this.txtValorUnit.Location = new System.Drawing.Point(375, 35);
-            this.txtValorUnit.Name = "txtValorUnit";
-            this.txtValorUnit.Size = new System.Drawing.Size(71, 20);
-            this.txtValorUnit.TabIndex = 25;
-            // 
-            // grbPedido
-            // 
-            this.grbPedido.Controls.Add(this.lblNumeroPedido);
-            this.grbPedido.Controls.Add(this.dtpDataVenda);
-            this.grbPedido.Controls.Add(this.btnCancelar);
-            this.grbPedido.Controls.Add(this.linkLabel4);
-            this.grbPedido.Controls.Add(this.linkLabel8);
-            this.grbPedido.Location = new System.Drawing.Point(12, 12);
-            this.grbPedido.Name = "grbPedido";
-            this.grbPedido.Size = new System.Drawing.Size(609, 125);
-            this.grbPedido.TabIndex = 27;
-            this.grbPedido.TabStop = false;
-            this.grbPedido.Text = "Pedido";
-            // 
-            // dtpDataVenda
-            // 
-            this.dtpDataVenda.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataVenda.Location = new System.Drawing.Point(478, 17);
-            this.dtpDataVenda.Name = "dtpDataVenda";
-            this.dtpDataVenda.Size = new System.Drawing.Size(101, 20);
-            this.dtpDataVenda.TabIndex = 0;
-            // 
-            // lblNumeroPedido
-            // 
-            this.lblNumeroPedido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblNumeroPedido.Location = new System.Drawing.Point(39, 16);
-            this.lblNumeroPedido.Name = "lblNumeroPedido";
-            this.lblNumeroPedido.Size = new System.Drawing.Size(72, 25);
-            this.lblNumeroPedido.TabIndex = 15;
-            // 
-            // grbItens
-            // 
-            this.grbItens.Controls.Add(this.lblTotalPedido);
-            this.grbItens.Controls.Add(this.btnRemoverItem);
-            this.grbItens.Controls.Add(this.txtValorUnit);
-            this.grbItens.Controls.Add(this.btnAdicionarItem);
-            this.grbItens.Controls.Add(this.lblTotalProduto);
-            this.grbItens.Controls.Add(this.txtQtdVenda);
-            this.grbItens.Controls.Add(this.lblDescricaoProduto);
-            this.grbItens.Controls.Add(this.dgvItem);
-            this.grbItens.Controls.Add(this.linkLabel9);
-            this.grbItens.Controls.Add(this.linkLabel5);
-            this.grbItens.Controls.Add(this.txtCodigo);
-            this.grbItens.Controls.Add(this.btnBuscarProduto);
-            this.grbItens.Controls.Add(this.linkLabel10);
-            this.grbItens.Controls.Add(this.linkLabel3);
-            this.grbItens.Controls.Add(this.linkLabel7);
-            this.grbItens.Controls.Add(this.linkLabel6);
-            this.grbItens.Location = new System.Drawing.Point(12, 148);
-            this.grbItens.Name = "grbItens";
-            this.grbItens.Size = new System.Drawing.Size(609, 238);
-            this.grbItens.TabIndex = 28;
-            this.grbItens.TabStop = false;
-            this.grbItens.Text = "Itens";
-            // 
-            // lblDescricaoProduto
-            // 
-            this.lblDescricaoProduto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDescricaoProduto.Location = new System.Drawing.Point(123, 32);
-            this.lblDescricaoProduto.Name = "lblDescricaoProduto";
-            this.lblDescricaoProduto.Size = new System.Drawing.Size(172, 23);
-            this.lblDescricaoProduto.TabIndex = 16;
-            // 
-            // lblTotalProduto
-            // 
-            this.lblTotalProduto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblTotalProduto.Location = new System.Drawing.Point(460, 32);
-            this.lblTotalProduto.Name = "lblTotalProduto";
-            this.lblTotalProduto.Size = new System.Drawing.Size(78, 23);
-            this.lblTotalProduto.TabIndex = 17;
-            // 
-            // lblTotalPedido
-            // 
-            this.lblTotalPedido.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblTotalPedido.Location = new System.Drawing.Point(472, 204);
-            this.lblTotalPedido.Name = "lblTotalPedido";
-            this.lblTotalPedido.Size = new System.Drawing.Size(78, 23);
-            this.lblTotalPedido.TabIndex = 26;
-            // 
             // Codigo
             // 
             this.Codigo.HeaderText = "Código";
@@ -423,16 +335,111 @@
             this.TotalItem.Name = "TotalItem";
             this.TotalItem.ReadOnly = true;
             // 
-            // grbVenda
+            // txtQtdVenda
             // 
-            this.grbVenda.Controls.Add(this.txtNumPedidoPesq);
-            this.grbVenda.Controls.Add(this.btnLocalizaPedido);
-            this.grbVenda.Location = new System.Drawing.Point(227, 405);
-            this.grbVenda.Name = "grbVenda";
-            this.grbVenda.Size = new System.Drawing.Size(179, 53);
-            this.grbVenda.TabIndex = 29;
-            this.grbVenda.TabStop = false;
-            this.grbVenda.Text = "Informe o Nº da Venda";
+            this.txtQtdVenda.Location = new System.Drawing.Point(307, 34);
+            this.txtQtdVenda.Name = "txtQtdVenda";
+            this.txtQtdVenda.Size = new System.Drawing.Size(59, 20);
+            this.txtQtdVenda.TabIndex = 24;
+            this.txtQtdVenda.Leave += new System.EventHandler(this.txtQtdVenda_Leave);
+            // 
+            // txtValorUnit
+            // 
+            this.txtValorUnit.Location = new System.Drawing.Point(375, 35);
+            this.txtValorUnit.Name = "txtValorUnit";
+            this.txtValorUnit.Size = new System.Drawing.Size(71, 20);
+            this.txtValorUnit.TabIndex = 25;
+            this.txtValorUnit.Leave += new System.EventHandler(this.txtValorUnit_Leave);
+            // 
+            // grbPedido
+            // 
+            this.grbPedido.Controls.Add(this.lblNumeroPedido);
+            this.grbPedido.Controls.Add(this.dtpDataVenda);
+            this.grbPedido.Controls.Add(this.btnCancelar);
+            this.grbPedido.Controls.Add(this.linkLabel4);
+            this.grbPedido.Controls.Add(this.linkLabel8);
+            this.grbPedido.Location = new System.Drawing.Point(12, 12);
+            this.grbPedido.Name = "grbPedido";
+            this.grbPedido.Size = new System.Drawing.Size(609, 125);
+            this.grbPedido.TabIndex = 27;
+            this.grbPedido.TabStop = false;
+            this.grbPedido.Text = "Pedido";
+            // 
+            // lblNumeroPedido
+            // 
+            this.lblNumeroPedido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblNumeroPedido.Location = new System.Drawing.Point(39, 16);
+            this.lblNumeroPedido.Name = "lblNumeroPedido";
+            this.lblNumeroPedido.Size = new System.Drawing.Size(72, 25);
+            this.lblNumeroPedido.TabIndex = 15;
+            // 
+            // dtpDataVenda
+            // 
+            this.dtpDataVenda.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataVenda.Location = new System.Drawing.Point(478, 17);
+            this.dtpDataVenda.Name = "dtpDataVenda";
+            this.dtpDataVenda.Size = new System.Drawing.Size(101, 20);
+            this.dtpDataVenda.TabIndex = 0;
+            // 
+            // grbItens
+            // 
+            this.grbItens.Controls.Add(this.lblTotalPedido);
+            this.grbItens.Controls.Add(this.btnRemoverItem);
+            this.grbItens.Controls.Add(this.txtValorUnit);
+            this.grbItens.Controls.Add(this.btnAdicionarItem);
+            this.grbItens.Controls.Add(this.lblTotalProduto);
+            this.grbItens.Controls.Add(this.txtQtdVenda);
+            this.grbItens.Controls.Add(this.lblDescricaoProduto);
+            this.grbItens.Controls.Add(this.dgvItem);
+            this.grbItens.Controls.Add(this.linkLabel9);
+            this.grbItens.Controls.Add(this.linkLabel5);
+            this.grbItens.Controls.Add(this.txtCodigo);
+            this.grbItens.Controls.Add(this.btnBuscarProduto);
+            this.grbItens.Controls.Add(this.linkLabel10);
+            this.grbItens.Controls.Add(this.linkLabel3);
+            this.grbItens.Controls.Add(this.linkLabel7);
+            this.grbItens.Controls.Add(this.linkLabel6);
+            this.grbItens.Location = new System.Drawing.Point(12, 148);
+            this.grbItens.Name = "grbItens";
+            this.grbItens.Size = new System.Drawing.Size(609, 238);
+            this.grbItens.TabIndex = 28;
+            this.grbItens.TabStop = false;
+            this.grbItens.Text = "Itens";
+            // 
+            // lblTotalPedido
+            // 
+            this.lblTotalPedido.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTotalPedido.Location = new System.Drawing.Point(472, 204);
+            this.lblTotalPedido.Name = "lblTotalPedido";
+            this.lblTotalPedido.Size = new System.Drawing.Size(78, 23);
+            this.lblTotalPedido.TabIndex = 26;
+            // 
+            // lblTotalProduto
+            // 
+            this.lblTotalProduto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTotalProduto.Location = new System.Drawing.Point(460, 32);
+            this.lblTotalProduto.Name = "lblTotalProduto";
+            this.lblTotalProduto.Size = new System.Drawing.Size(78, 23);
+            this.lblTotalProduto.TabIndex = 17;
+            // 
+            // lblDescricaoProduto
+            // 
+            this.lblDescricaoProduto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblDescricaoProduto.Location = new System.Drawing.Point(123, 32);
+            this.lblDescricaoProduto.Name = "lblDescricaoProduto";
+            this.lblDescricaoProduto.Size = new System.Drawing.Size(172, 23);
+            this.lblDescricaoProduto.TabIndex = 16;
+            // 
+            // grbPesquisaPedido
+            // 
+            this.grbPesquisaPedido.Controls.Add(this.txtNumPedidoPesq);
+            this.grbPesquisaPedido.Controls.Add(this.btnLocalizaPedido);
+            this.grbPesquisaPedido.Location = new System.Drawing.Point(227, 405);
+            this.grbPesquisaPedido.Name = "grbPesquisaPedido";
+            this.grbPesquisaPedido.Size = new System.Drawing.Size(179, 53);
+            this.grbPesquisaPedido.TabIndex = 29;
+            this.grbPesquisaPedido.TabStop = false;
+            this.grbPesquisaPedido.Text = "Informe o Nº da Venda";
             // 
             // txtNumPedidoPesq
             // 
@@ -445,14 +452,18 @@
             // 
             this.ErrErro.ContainerControl = this;
             // 
+            // categoriaTableAdapter1
+            // 
+            this.categoriaTableAdapter1.ClearBeforeFill = true;
+            // 
             // frmCadVendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(627, 470);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnGravar);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.cmbCliente);
             this.Controls.Add(this.txtObservacao);
@@ -460,17 +471,18 @@
             this.Controls.Add(this.lblN);
             this.Controls.Add(this.grbPedido);
             this.Controls.Add(this.grbItens);
-            this.Controls.Add(this.grbVenda);
+            this.Controls.Add(this.grbPesquisaPedido);
             this.Name = "frmCadVendas";
             this.Text = "Lançamento de Vendas";
             this.Load += new System.EventHandler(this.frmCadVendas_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadVendas_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItem)).EndInit();
             this.grbPedido.ResumeLayout(false);
             this.grbPedido.PerformLayout();
             this.grbItens.ResumeLayout(false);
             this.grbItens.PerformLayout();
-            this.grbVenda.ResumeLayout(false);
-            this.grbVenda.PerformLayout();
+            this.grbPesquisaPedido.ResumeLayout(false);
+            this.grbPesquisaPedido.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrErro)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -495,8 +507,8 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnBuscarProduto;
         private System.Windows.Forms.Button btnNovo;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnPesquisar;
+        private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnLocalizaPedido;
         private System.Windows.Forms.Button btnAdicionarItem;
@@ -516,8 +528,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalItem;
-        private System.Windows.Forms.GroupBox grbVenda;
+        private System.Windows.Forms.GroupBox grbPesquisaPedido;
         private System.Windows.Forms.TextBox txtNumPedidoPesq;
         private System.Windows.Forms.ErrorProvider ErrErro;
+        private Dados.DataSet_Dados_do_BancoTableAdapters.CategoriaTableAdapter categoriaTableAdapter1;
     }
 }
