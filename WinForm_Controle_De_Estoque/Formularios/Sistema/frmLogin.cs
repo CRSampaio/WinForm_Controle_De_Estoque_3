@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinForm_Controle_De_Estoque.Dados;
+using WinForm_Controle_De_Estoque.db_05579_1_C_1_2017DataSetTableAdapters;
 
 namespace WinForm_Controle_De_Estoque.Formularios.Sistema
 {
@@ -65,34 +67,36 @@ namespace WinForm_Controle_De_Estoque.Formularios.Sistema
                     this.Close();
                 }
 
-                // Quando estivermos acessando o Banco de Dados
-                //if (CaixasOK())
-                //{
-                //    DataSet_Dados_Do_Banco.UsuarioDataTable dtUsuario;
-                //    UsuarioTableAdapter taUsuario = new UsuarioTableAdapter();
-                //    dtUsuario = taUsuario.VerificaNivel(txtNomeUsuario.Text, txtSenha.Text);
-                //    if (dtUsuario.Rows.Count == 0)
-                //    {
-                //        MessageBox.Show("Usuário ou Senha inválidos");
-                //        vErros++;
-                //        if (vErros == 3)
-                //        {
-                //            MessageBox.Show("Número de tentativas estogado...");
-                //            taUsuario.Dispose();
-                //            this.Close();                       
-                //        }                        
-                //    }
-                //    else
-                //    {
-                //        Properties.Settings.Default.NivelUsuarioLogado = (int)dtUsuario.Rows[0]["Nível"];
-                //        Properties.Settings.Default.NomeUsuarioLogado = txtNomeUsuario.Text;
-                //        MDI_Menu frmMenuPrincipal = new MDI_Menu();
-                //        frmMenuPrincipal.Show();
-                //        this.Close();
-                //    
+                //Quando estivermos acessando o Banco de Dados
+                if (CaixasOK())
+                {
+                    DataSet_Dados_do_Banco.UsuarioDataTable dtUsuario;
+                    UsuarioTableAdapter taUsuario = new UsuarioTableAdapter();
+                    dtUsuario = taUsuario.VerificaNivel(txtUsuario.Text, txtSenha.Text);
+                    if (dtUsuario.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Usuário ou Senha inválidos");
+                        vErros++;
+                        if (vErros == 3)
+                        {
+                            MessageBox.Show("Número de tentativas estogado...");
+                            taUsuario.Dispose();
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        Properties.Settings.Default.NivelUsuarioLogado = (int)dtUsuario.Rows[0]["Nível"];
+                        Properties.Settings.Default.NomeUsuarioLogado = txtUsuario.Text;
+                        MDI_Menu frmMenuPrincipal = new MDI_Menu();
+                        frmMenuPrincipal.Show();
+                        this.Close();
+
+                    }
+                }
+
             }
         }
-
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
