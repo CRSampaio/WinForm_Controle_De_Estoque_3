@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.db_05579_1_C_1_2017DataSet = new WinForm_Controle_De_Estoque.db_05579_1_C_1_2017DataSet();
+            this.db_05579_1_C_1_2017DataSet = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_Banco();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.clienteTableAdapter = new WinForm_Controle_De_Estoque.db_05579_1_C_1_2017DataSetTableAdapters.ClienteTableAdapter();
+            this.clienteTableAdapter = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.ClienteTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.db_05579_1_C_1_2017DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -83,8 +83,8 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private db_05579_1_C_1_2017DataSet db_05579_1_C_1_2017DataSet;
+        private Dados.DataSet_Dados_do_Banco db_05579_1_C_1_2017DataSet;
         private System.Windows.Forms.BindingSource clienteBindingSource;
-        private db_05579_1_C_1_2017DataSetTableAdapters.ClienteTableAdapter clienteTableAdapter;
+        private Dados.DataSet_Dados_do_BancoTableAdapters.ClienteTableAdapter clienteTableAdapter;
     }
 }

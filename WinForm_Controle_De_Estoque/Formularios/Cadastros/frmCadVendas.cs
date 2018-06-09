@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinForm_Controle_De_Estoque.Dados;
 using WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters;
-using WinForm_Controle_De_Estoque.db_05579_1_C_1_2017DataSetTableAdapters;
 
 namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
 {
@@ -29,7 +28,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
             btnCancelar_Click(null, null); // para limpar informações pré existentes no formulário
             CarregaGridItens();
             PedidoTableAdapter taPedido = new PedidoTableAdapter();
-            vid_VendaAtual = (int)taPedido.UltimoPedido() + 1;
+            vld_VendaAtual = (int)taPedido.UltimoPedido().Rows[0][""] + 1;
             lblN.Text = vld_VendaAtual.ToString();
             grbPedido.Enabled = true;
             grbItens.Enabled = true;
@@ -54,7 +53,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
             int vCodigoProduto = (int)dgvItem.CurrentRow.Cells["Codigo"].Value;
             vValorTotalProduto = double.Parse(dgvItem.CurrentRow.Cells["TotalItem"].Value.ToString());
 
-            taItemTemp.Delete(vld_VendaAtual, vCodigoProduto, vUsuario);
+            taItemTemp.Delete(vld_VendaAtual, vUsuario, vCodigoProduto);
             CarregaGridItens();
 
             vTotalDoPedido = vTotalDoPedido - vValorTotalProduto;
@@ -77,7 +76,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
             taPedido.Insert(int.Parse(cmbCliente.SelectedValue.ToString()),
                 dtpDataVenda.Value, decimal.Parse(vTotalDoPedido.ToString()), "V",
                 txtObservacao.Text);
-            vld_VendaAtual = (int)taPedido.UltimoPedido();
+            vld_VendaAtual = (int)taPedido.UltimoPedido().Rows[0]["UltimoID"];
             // —————————————————————————————————————————————————————————————————————
 
             // Gravando os itens
@@ -128,9 +127,8 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
 
         private void frmCadVendas_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dataSet_Dados_Do_Banco.Cliente' table.
-            // You cna move, or remove it, as needed.
-            this.clienteTableAdapter.Fill(this.dataSet_Dados_Do_Banco.Cliente);
+            // TODO: This line of code loads data into the 'dataSet_Dados_do_Banco.Cliente' table. You can move, or remove it, as needed.
+            this.clienteTableAdapter.Fill(this.dataSet_Dados_do_Banco.Cliente);
             vUsuario = Properties.Settings.Default.NomeUsuarioLogado.ToString();
         }
 
@@ -233,7 +231,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
             int.Parse(txtQtdVenda.Text), decimal.Parse(txtValorUnit.Text), vUsuario);
             // -----------------------------------------------
             Limpa_Campos_Item();
-            CarregaGridItems(); // Carrega o grid com os dados, atualizados
+            CarregaGridItens(); // Carrega o grid com os dados, atualizados
             vTotalDoPedido = vTotalDoPedido + vValorTotalProduto;
             lblTotalPedido.Text = (vTotalDoPedido).ToString("###,##0.00");
         }

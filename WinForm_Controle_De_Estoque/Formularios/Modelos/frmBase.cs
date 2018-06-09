@@ -205,8 +205,8 @@ namespace WinForm_Controle_De_Estoque.Formularios.Modelos
                 vOperacao = " <> ";
 
             // elimina apóstrofos caso existam
-            txtParametro1.Text = txtParametro1.Text.Replace("", "");
-            txtParametro2.Text = txtParametro2.Text.Replace("", "");
+            txtParametro1.Text = txtParametro1.Text.Replace(" ", "");
+            txtParametro2.Text = txtParametro2.Text.Replace(" ", "");
             if (cmbBuscar.Text == "Todos")
             {
                 vFiltro = "";
@@ -242,12 +242,14 @@ namespace WinForm_Controle_De_Estoque.Formularios.Modelos
             dataSetDadosDoBancoBindingSource.RemoveFilter();
             dataSetDadosDoBancoBindingSource.Filter = vFiltro;
         }
-      
-private void frmBase_Load(object sender, EventArgs e)
+
+        private void frmBase_Load(object sender, EventArgs e)
         {
             lblModo.Text = "Consultando";
             sStatus = StatusCadastro.scConsultando;
             Atualiza_Grid();
+            HabilitaDesabilitaControles(true);
+            cmbBuscar.SelectedIndex = 0;
         }
 
         private void frmBase_KeyDown(object sender, KeyEventArgs e)

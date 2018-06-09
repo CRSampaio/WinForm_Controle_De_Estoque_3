@@ -54,12 +54,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet_Dados_do_Banco.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\Cadastros\frmCadProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,10 +96,10 @@
     <Compile Include="Formularios\Sistema\SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="MDI_Menu.cs">
+    <Compile Include="Formularios\Sistema\MDI_Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MDI_Menu.Designer.cs">
+    <Compile Include="Formularios\Sistema\MDI_Menu.Designer.cs">
       <DependentUpon>MDI_Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -137,7 +131,7 @@
     <EmbeddedResource Include="Formularios\Sistema\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MDI_Menu.resx">
+    <EmbeddedResource Include="Formularios\Sistema\MDI_Menu.resx">
       <DependentUpon>MDI_Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

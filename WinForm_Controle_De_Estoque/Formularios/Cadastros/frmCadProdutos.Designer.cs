@@ -43,28 +43,35 @@
             this.chkAtivo = new System.Windows.Forms.CheckBox();
             this.maskedTextBoxData = new System.Windows.Forms.MaskedTextBox();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
-            this.categoriaTableAdapter = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.CategoriaTableAdapter();
-            this.db_05579_1_C_1_2017DataSet = new WinForm_Controle_De_Estoque.db_05579_1_C_1_2017DataSet();
             this.categoriaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.categoriaTableAdapter1 = new WinForm_Controle_De_Estoque.db_05579_1_C_1_2017DataSetTableAdapters.CategoriaTableAdapter();
-            this.tableAdapterManager = new WinForm_Controle_De_Estoque.db_05579_1_C_1_2017DataSetTableAdapters.TableAdapterManager();
+            this.dataSet_Dados_do_Banco1 = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_Banco();
+            this.categoriaTableAdapter = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.CategoriaTableAdapter();
+            this.tableAdapterManager = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.TableAdapterManager();
             ((System.ComponentModel.ISupportInitialize)(this.dtGenerico)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errErro)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_Do_Banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetDadosDoBancoBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grbPesquisa.SuspendLayout();
             this.Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.db_05579_1_C_1_2017DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_Do_Banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_do_Banco1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(103, 33);
             // 
             // lblModo
             // 
-            this.lblModo.Size = new System.Drawing.Size(52, 13);
-            this.lblModo.Text = "Alterando";
+            this.lblModo.Size = new System.Drawing.Size(66, 13);
+            this.lblModo.Text = "Consultando";
+            // 
+            // dataSetDadosDoBancoBindingSource
+            // 
+            this.dataSetDadosDoBancoBindingSource.Filter = "";
             // 
             // groupBox1
             // 
@@ -82,6 +89,11 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Size = new System.Drawing.Size(675, 199);
+            // 
+            // Panel1
+            // 
+            this.Panel1.Size = new System.Drawing.Size(295, 77);
             // 
             // label3
             // 
@@ -193,40 +205,39 @@
             // 
             // cmbCategoria
             // 
+            this.cmbCategoria.DataSource = this.categoriaBindingSource;
+            this.cmbCategoria.DisplayMember = "cat_Descricao";
             this.cmbCategoria.FormattingEnabled = true;
             this.cmbCategoria.Location = new System.Drawing.Point(142, 44);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(121, 21);
             this.cmbCategoria.TabIndex = 15;
+            this.cmbCategoria.ValueMember = "cat_Id";
+            // 
+            // categoriaBindingSource
+            // 
+            this.categoriaBindingSource.DataMember = "Categoria";
+            this.categoriaBindingSource.DataSource = this.dataSet_Dados_do_Banco1;
+            // 
+            // dataSet_Dados_do_Banco1
+            // 
+            this.dataSet_Dados_do_Banco1.DataSetName = "DataSet_Dados_do_Banco";
+            this.dataSet_Dados_do_Banco1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // categoriaTableAdapter
             // 
             this.categoriaTableAdapter.ClearBeforeFill = true;
             // 
-            // db_05579_1_C_1_2017DataSet
-            // 
-            this.db_05579_1_C_1_2017DataSet.DataSetName = "db_05579_1_C_1_2017DataSet";
-            this.db_05579_1_C_1_2017DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // categoriaBindingSource
-            // 
-            this.categoriaBindingSource.DataMember = "Categoria";
-            this.categoriaBindingSource.DataSource = this.db_05579_1_C_1_2017DataSet;
-            // 
-            // categoriaTableAdapter1
-            // 
-            this.categoriaTableAdapter1.ClearBeforeFill = true;
-            // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.CategoriaTableAdapter = this.categoriaTableAdapter1;
+            this.tableAdapterManager.CategoriaTableAdapter = this.categoriaTableAdapter;
             this.tableAdapterManager.ClienteTableAdapter = null;
             this.tableAdapterManager.Item_TempTableAdapter = null;
             this.tableAdapterManager.ItemTableAdapter = null;
             this.tableAdapterManager.PedidoTableAdapter = null;
             this.tableAdapterManager.ProdutoTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = WinForm_Controle_De_Estoque.db_05579_1_C_1_2017DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsuarioTableAdapter = null;
             // 
             // frmCadProdutos
@@ -238,7 +249,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtGenerico)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errErro)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_Do_Banco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetDadosDoBancoBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -246,8 +256,9 @@
             this.grbPesquisa.ResumeLayout(false);
             this.grbPesquisa.PerformLayout();
             this.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.db_05579_1_C_1_2017DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_Do_Banco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_do_Banco1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,10 +280,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxData;
         private System.Windows.Forms.ComboBox cmbCategoria;
-        private Dados.DataSet_Dados_do_BancoTableAdapters.CategoriaTableAdapter categoriaTableAdapter;
-        private db_05579_1_C_1_2017DataSet db_05579_1_C_1_2017DataSet;
+        private Dados.DataSet_Dados_do_Banco dataSet_Dados_do_Banco1;
         private System.Windows.Forms.BindingSource categoriaBindingSource;
-        private db_05579_1_C_1_2017DataSetTableAdapters.CategoriaTableAdapter categoriaTableAdapter1;
-        private db_05579_1_C_1_2017DataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private Dados.DataSet_Dados_do_BancoTableAdapters.CategoriaTableAdapter categoriaTableAdapter;
+        private Dados.DataSet_Dados_do_BancoTableAdapters.TableAdapterManager tableAdapterManager;
     }
 }

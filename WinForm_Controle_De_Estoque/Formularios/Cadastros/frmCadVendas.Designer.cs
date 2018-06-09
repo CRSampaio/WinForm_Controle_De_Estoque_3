@@ -70,11 +70,16 @@
             this.txtNumPedidoPesq = new System.Windows.Forms.TextBox();
             this.ErrErro = new System.Windows.Forms.ErrorProvider(this.components);
             this.categoriaTableAdapter1 = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.CategoriaTableAdapter();
+            this.dataSet_Dados_do_Banco = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_Banco();
+            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.clienteTableAdapter = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.ClienteTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItem)).BeginInit();
             this.grbPedido.SuspendLayout();
             this.grbItens.SuspendLayout();
             this.grbPesquisaPedido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrErro)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_do_Banco)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lblN
@@ -196,11 +201,14 @@
             // 
             // cmbCliente
             // 
+            this.cmbCliente.DataSource = this.clienteBindingSource;
+            this.cmbCliente.DisplayMember = "cli_NomeRazao";
             this.cmbCliente.FormattingEnabled = true;
             this.cmbCliente.Location = new System.Drawing.Point(193, 32);
             this.cmbCliente.Name = "cmbCliente";
             this.cmbCliente.Size = new System.Drawing.Size(241, 21);
             this.cmbCliente.TabIndex = 12;
+            this.cmbCliente.ValueMember = "cli_Id";
             // 
             // btnCancelar
             // 
@@ -456,6 +464,20 @@
             // 
             this.categoriaTableAdapter1.ClearBeforeFill = true;
             // 
+            // dataSet_Dados_do_Banco
+            // 
+            this.dataSet_Dados_do_Banco.DataSetName = "DataSet_Dados_do_Banco";
+            this.dataSet_Dados_do_Banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // clienteBindingSource
+            // 
+            this.clienteBindingSource.DataMember = "Cliente";
+            this.clienteBindingSource.DataSource = this.dataSet_Dados_do_Banco;
+            // 
+            // clienteTableAdapter
+            // 
+            this.clienteTableAdapter.ClearBeforeFill = true;
+            // 
             // frmCadVendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -484,6 +506,8 @@
             this.grbPesquisaPedido.ResumeLayout(false);
             this.grbPesquisaPedido.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrErro)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_do_Banco)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -532,5 +556,8 @@
         private System.Windows.Forms.TextBox txtNumPedidoPesq;
         private System.Windows.Forms.ErrorProvider ErrErro;
         private Dados.DataSet_Dados_do_BancoTableAdapters.CategoriaTableAdapter categoriaTableAdapter1;
+        private Dados.DataSet_Dados_do_Banco dataSet_Dados_do_Banco;
+        private System.Windows.Forms.BindingSource clienteBindingSource;
+        private Dados.DataSet_Dados_do_BancoTableAdapters.ClienteTableAdapter clienteTableAdapter;
     }
 }

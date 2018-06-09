@@ -21,9 +21,9 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
             try
             {
                 this.Text = lblTitulo.Text = "Produtos";
-                DataSet_Dados_do_Banco.ProdutoDataTable dt = new DataSet_Dados_do_Banco.ProdutoDataTable();
+                //DataSet_Dados_do_Banco.ProdutoDataTable dt = new DataSet_Dados_do_Banco.ProdutoDataTable();
                 ProdutoTableAdapter ta = new ProdutoTableAdapter();
-                dt = ta.GetData();
+                //dt = ta.GetData();
                 DataSet_Dados_do_Banco ds = new DataSet_Dados_do_Banco();
                 ta.Fill(ds.Produto);
                 dataSetDadosDoBancoBindingSource.DataSource = ds.Produto;
@@ -37,7 +37,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
                 //Trocando o tipo das Colunas para ComboBox e ChechBox
                 DataGridViewComboBoxColumn dgvcolcombo = new DataGridViewComboBoxColumn();
                 dgvcolcombo.HeaderText = "Categoria";
-                dgvcolcombo.DataSource = dataSetDadosDoBancoBindingSource;
+                dgvcolcombo.DataSource = categoriaBindingSource;
                 dgvcolcombo.DataPropertyName = "cat_Id";
                 dgvcolcombo.Name = "cat_Id";
                 dgvcolcombo.DisplayMember = "cat_Descricao";
@@ -73,7 +73,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
                 dgvGrid.Columns["pro_Ativo"].Width = 45;
                 dgvGrid.Columns["pro_Data"].HeaderText = "Data";
                 dgvGrid.Columns["pro_Data"].Width = 100;
-                dgvGrid.Columns["cat-Id"].Width = 200;
+                dgvGrid.Columns["cat_id"].Width = 200;
 
                 dgvGrid.Width = tabControl1.Width - 20;
 
@@ -89,7 +89,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                throw ex;
             }
         }
 
@@ -148,9 +148,9 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
 
         private void frmCadProdutos_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'db_05579_1_C_1_2017DataSet.Categoria' table. You can move, or remove it, as needed.
-            this.categoriaTableAdapter1.Fill(this.db_05579_1_C_1_2017DataSet.Categoria);
-            
+            // TODO: This line of code loads data into the 'dataSet_Dados_do_Banco1.Categoria' table. You can move, or remove it, as needed.
+            this.categoriaTableAdapter.Fill(this.dataSet_Dados_do_Banco1.Categoria);
+            //this.categoriaTableAdapter.Fill(this.dataSet_Dados_Do_Banco)
         }
     }
 }

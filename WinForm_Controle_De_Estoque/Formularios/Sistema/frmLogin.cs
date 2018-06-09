@@ -47,25 +47,25 @@ namespace WinForm_Controle_De_Estoque.Formularios.Sistema
         {
             if (CaixasOK())
             {
-                // enquanto não temos banco de dados
-                if (txtUsuario.Text != "123" && txtSenha.Text != "123")
-                {
-                    MessageBox.Show("Usuário ou Senha inválidos");
-                    vErros++;
-                    if (vErros == 3)
-                    {
-                        MessageBox.Show("Número de tentativas esgotado...");
-                        this.Close();
-                    }
-                }
-                else
-                {
-                    Properties.Settings.Default.NivelUsuarioLogado = 1;
-                    Properties.Settings.Default.NomeUsuarioLogado = txtUsuario.Text;
-                    MDI_Menu frmMenuPrincipal = new MDI_Menu();
-                    frmMenuPrincipal.Show();
-                    this.Close();
-                }
+                //// enquanto não temos banco de dados
+                //if (txtUsuario.Text != "123" && txtSenha.Text != "123")
+                //{
+                //    MessageBox.Show("Usuário ou Senha inválidos");
+                //    vErros++;
+                //    if (vErros == 3)
+                //    {
+                //        MessageBox.Show("Número de tentativas esgotado...");
+                //        this.Close();
+                //    }
+                //}
+                //else
+                //{
+                //    Properties.Settings.Default.NivelUsuarioLogado = 1;
+                //    Properties.Settings.Default.NomeUsuarioLogado = txtUsuario.Text;
+                //    MDI_Menu frmMenuPrincipal = new MDI_Menu();
+                //    frmMenuPrincipal.Show();
+                //    this.Close();
+                //}
 
                 //Quando estivermos acessando o Banco de Dados
                 if (CaixasOK())
@@ -90,7 +90,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Sistema
                         Properties.Settings.Default.NomeUsuarioLogado = txtUsuario.Text;
                         MDI_Menu frmMenuPrincipal = new MDI_Menu();
                         frmMenuPrincipal.Show();
-                        this.Close();
+                        this.Hide();
 
                     }
                 }
@@ -99,7 +99,12 @@ namespace WinForm_Controle_De_Estoque.Formularios.Sistema
         
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Application.ExitThread();
+            Application.Exit();
+        }
+
+        private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

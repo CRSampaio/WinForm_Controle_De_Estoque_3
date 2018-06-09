@@ -50,6 +50,7 @@
             this.bindingNavigatorMoveNextItem1 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem1 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.dgvGrid = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -69,7 +70,6 @@
             this.errErro = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.lblModo = new System.Windows.Forms.Label();
-            this.dataSet_Dados_Do_Banco = new System.Data.DataSet();
             this.grbPesquisa = new System.Windows.Forms.GroupBox();
             this.btnLocalizar = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -82,17 +82,19 @@
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.dataSetDadosDoBancoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblTitulo = new System.Windows.Forms.LinkLabel();
+            this.dataSet_Dados_Do_Banco = new System.Data.DataSet();
             this.Panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).BeginInit();
             this.bindingNavigator.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrid)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errErro)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_Do_Banco)).BeginInit();
             this.grbPesquisa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetDadosDoBancoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_Do_Banco)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel1
@@ -174,7 +176,7 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.bindingNavigator);
-            this.tabPage1.Controls.Add(this.dgvGrid);
+            this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -296,12 +298,24 @@
             this.bindingNavigatorSeparator5.Name = "bindingNavigatorSeparator5";
             this.bindingNavigatorSeparator5.Size = new System.Drawing.Size(6, 25);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dgvGrid);
+            this.panel2.Location = new System.Drawing.Point(0, 31);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(677, 172);
+            this.panel2.TabIndex = 3;
+            // 
             // dgvGrid
             // 
+            this.dgvGrid.AllowUserToAddRows = false;
+            this.dgvGrid.AllowUserToDeleteRows = false;
             this.dgvGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGrid.Location = new System.Drawing.Point(-4, -33);
+            this.dgvGrid.Location = new System.Drawing.Point(3, 3);
+            this.dgvGrid.MultiSelect = false;
             this.dgvGrid.Name = "dgvGrid";
-            this.dgvGrid.Size = new System.Drawing.Size(687, 230);
+            this.dgvGrid.ReadOnly = true;
+            this.dgvGrid.Size = new System.Drawing.Size(671, 166);
             this.dgvGrid.TabIndex = 1;
             this.dgvGrid.SelectionChanged += new System.EventHandler(this.dgvGrid_SelectionChanged);
             this.dgvGrid.DoubleClick += new System.EventHandler(this.dgvGrid_DoubleClick);
@@ -336,6 +350,11 @@
             // cmbBuscar
             // 
             this.cmbBuscar.FormattingEnabled = true;
+            this.cmbBuscar.Items.AddRange(new object[] {
+            "Todos",
+            "Que começa com",
+            "Que contém",
+            "Que esteja entre"});
             this.cmbBuscar.Location = new System.Drawing.Point(145, 44);
             this.cmbBuscar.Name = "cmbBuscar";
             this.cmbBuscar.Size = new System.Drawing.Size(162, 21);
@@ -438,10 +457,6 @@
             this.lblModo.Size = new System.Drawing.Size(34, 13);
             this.lblModo.TabIndex = 14;
             this.lblModo.Text = "Modo";
-            // 
-            // dataSet_Dados_Do_Banco
-            // 
-            this.dataSet_Dados_Do_Banco.DataSetName = "NewDataSet";
             // 
             // grbPesquisa
             // 
@@ -555,11 +570,15 @@
             this.lblTitulo.TabStop = true;
             this.lblTitulo.Text = "Nome da Tabela";
             // 
+            // dataSet_Dados_Do_Banco
+            // 
+            this.dataSet_Dados_Do_Banco.DataSetName = "DataSet_Dados_do_Banco";
+            // 
             // frmBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(711, 477);
+            this.ClientSize = new System.Drawing.Size(711, 492);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.grbPesquisa);
             this.Controls.Add(this.lblModo);
@@ -578,13 +597,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).EndInit();
             this.bindingNavigator.ResumeLayout(false);
             this.bindingNavigator.PerformLayout();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrid)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errErro)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_Do_Banco)).EndInit();
             this.grbPesquisa.ResumeLayout(false);
             this.grbPesquisa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetDadosDoBancoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_Do_Banco)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -623,7 +643,6 @@
         public System.Windows.Forms.ErrorProvider errErro;
         public System.Windows.Forms.ToolTip toolTip1;
         public System.Windows.Forms.Label lblModo;
-        public System.Data.DataSet dataSet_Dados_Do_Banco;
         public System.Windows.Forms.BindingSource dataSetDadosDoBancoBindingSource;
         public System.ComponentModel.BackgroundWorker backgroundWorker1;
         public System.Windows.Forms.TabControl tabControl1;
@@ -643,5 +662,7 @@
         public System.Windows.Forms.TextBox txtParametro2;
         public System.Windows.Forms.Button btnLocalizar;
         public System.Windows.Forms.Panel Panel1;
+        private System.Windows.Forms.Panel panel2;
+        public System.Data.DataSet dataSet_Dados_Do_Banco;
     }
 }

@@ -141,6 +141,7 @@
             this.Name = "frmLogin";
             this.ShowIcon = false;
             this.Text = "Tela de Login";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLogin_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.errErro)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);

@@ -51,7 +51,7 @@ namespace WinForm_Controle_De_Estoque.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=172.168.255.252;Initial Catalog=db_05579_1_C_1_2017;User ID=05579_1_C" +
-            "_1_2017;Password=p@ssw0rd1")]
+            "_1_2017;Password=P@ssw0rd")]
         public string db_05579_1_C_1_2017ConnectionString {
             get {
                 return ((string)(this["db_05579_1_C_1_2017ConnectionString"]));
