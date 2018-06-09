@@ -35,18 +35,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtGenerico)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errErro)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_Do_Banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetDadosDoBancoBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grbPesquisa.SuspendLayout();
             this.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_Do_Banco)).BeginInit();
             this.SuspendLayout();
             // 
             // lblModo
             // 
             this.lblModo.Size = new System.Drawing.Size(52, 13);
             this.lblModo.Text = "Alterando";
+            // 
+            // dataSetDadosDoBancoBindingSource
+            // 
+            this.dataSetDadosDoBancoBindingSource.Filter = "";
             // 
             // groupBox1
             // 
@@ -94,10 +98,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(711, 477);
             this.Name = "frmCategoria";
+            this.Text = "Categoria";
             ((System.ComponentModel.ISupportInitialize)(this.dtGenerico)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errErro)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_Do_Banco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetDadosDoBancoBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -105,6 +109,7 @@
             this.grbPesquisa.ResumeLayout(false);
             this.grbPesquisa.PerformLayout();
             this.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_Do_Banco)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
