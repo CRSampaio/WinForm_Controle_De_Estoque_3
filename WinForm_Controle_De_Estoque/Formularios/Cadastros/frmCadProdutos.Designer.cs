@@ -41,12 +41,12 @@
             this.txtValor = new System.Windows.Forms.TextBox();
             this.txtQtdEstoque = new System.Windows.Forms.TextBox();
             this.chkAtivo = new System.Windows.Forms.CheckBox();
-            this.maskedTextBoxData = new System.Windows.Forms.MaskedTextBox();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.categoriaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet_Dados_do_Banco1 = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_Banco();
             this.categoriaTableAdapter = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.CategoriaTableAdapter();
             this.tableAdapterManager = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.TableAdapterManager();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dtGenerico)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errErro)).BeginInit();
@@ -66,8 +66,8 @@
             // 
             // lblModo
             // 
-            this.lblModo.Size = new System.Drawing.Size(66, 13);
-            this.lblModo.Text = "Consultando";
+            this.lblModo.Size = new System.Drawing.Size(52, 13);
+            this.lblModo.Text = "Alterando";
             // 
             // dataSetDadosDoBancoBindingSource
             // 
@@ -75,8 +75,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dateTimePicker);
             this.groupBox1.Controls.Add(this.cmbCategoria);
-            this.groupBox1.Controls.Add(this.maskedTextBoxData);
             this.groupBox1.Controls.Add(this.chkAtivo);
             this.groupBox1.Controls.Add(this.txtValor);
             this.groupBox1.Controls.Add(this.txtQtdEstoque);
@@ -160,6 +160,7 @@
             // 
             // txtID
             // 
+            this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(142, 20);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(100, 20);
@@ -194,14 +195,6 @@
             this.chkAtivo.Size = new System.Drawing.Size(15, 14);
             this.chkAtivo.TabIndex = 13;
             this.chkAtivo.UseVisualStyleBackColor = true;
-            // 
-            // maskedTextBoxData
-            // 
-            this.maskedTextBoxData.Location = new System.Drawing.Point(142, 163);
-            this.maskedTextBoxData.Mask = "99/99/9999";
-            this.maskedTextBoxData.Name = "maskedTextBoxData";
-            this.maskedTextBoxData.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBoxData.TabIndex = 14;
             // 
             // cmbCategoria
             // 
@@ -239,6 +232,15 @@
             this.tableAdapterManager.ProdutoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsuarioTableAdapter = null;
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker.Location = new System.Drawing.Point(142, 163);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(100, 20);
+            this.dateTimePicker.TabIndex = 16;
+            this.dateTimePicker.Value = new System.DateTime(2018, 6, 14, 20, 28, 4, 0);
             // 
             // frmCadProdutos
             // 
@@ -278,11 +280,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxData;
         private System.Windows.Forms.ComboBox cmbCategoria;
         private Dados.DataSet_Dados_do_Banco dataSet_Dados_do_Banco1;
         private System.Windows.Forms.BindingSource categoriaBindingSource;
         private Dados.DataSet_Dados_do_BancoTableAdapters.CategoriaTableAdapter categoriaTableAdapter;
         private Dados.DataSet_Dados_do_BancoTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
     }
 }

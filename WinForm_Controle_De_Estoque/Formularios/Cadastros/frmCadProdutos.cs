@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -100,10 +101,10 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
                 txtID.Text = dgvGrid.CurrentRow.Cells["pro_ID"].Value.ToString();
                 cmbCategoria.SelectedValue = dgvGrid.CurrentRow.Cells["cat_ID"].Value;
                 txtDescricao.Text = dgvGrid.CurrentRow.Cells["pro_Descricao"].Value.ToString();
-                txtQtdEstoque.Text = dgvGrid.CurrentRow.Cells["pro_Valor"].Value.ToString();
+                txtQtdEstoque.Text = dgvGrid.CurrentRow.Cells["pro_QtdeEstoque"].Value.ToString();
                 txtValor.Text = dgvGrid.CurrentRow.Cells["pro_Valor"].Value.ToString();
                 chkAtivo.Checked = bool.Parse(dgvGrid.CurrentRow.Cells["pro_Ativo"].Value.ToString());
-                maskedTextBoxData.Text = dgvGrid.CurrentRow.Cells["pro_Data"].Value.ToString();
+                dateTimePicker.Value = Convert.ToDateTime(dgvGrid.CurrentRow.Cells["pro_Data"].Value);
             }
             catch (Exception ex)
             {
@@ -118,29 +119,34 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
             if (sStatus == StatusCadastro.scIncluindo)
             {
                 bSalvar = (ta.Insert(int.Parse(cmbCategoria.SelectedValue.ToString()),
-                txtDescricao.Text,int.Parse(txtQtdEstoque.Text),
-                decimal.Parse(txtValor.Text),
-                chkAtivo.Checked.ToString(),
-                DateTime.Parse(maskedTextBoxData.Text)) >0);
-            }
-            else if (sStatus == StatusCadastro.scAlterando)
-            {
-                bSalvar = (ta.Update(int.Parse(cmbCategoria.SelectedValue.ToString()),
                 txtDescricao.Text, int.Parse(txtQtdEstoque.Text),
                 decimal.Parse(txtValor.Text),
                 chkAtivo.Checked.ToString(),
-                DateTime.Parse(maskedTextBoxData.Text),
-                nCodGenerico) > 0);
+                dateTimePicker.Value) > 0);
             }
-
+            else if (sStatus == StatusCadastro.scAlterando)
+            {
+                try
+                {
+                    bSalvar = (ta.Update(int.Parse(cmbCategoria.SelectedValue.ToString()),
+                    txtDescricao.Text, int.Parse(txtQtdEstoque.Text),
+                    decimal.Parse(txtValor.Text),
+                    chkAtivo.Checked.ToString(),
+                    dateTimePicker.Value,
+                    nCodGenerico) > 0);
+                }
+                catch(FormatException ex)
+                {
+                    MessageBox.Show(ex.Message + ex.Source + ex.StackTrace);
+                }
+            }
             return bSalvar;
         }
 
         public override bool Excluir()
         {
             bool bExcluir = false;
-            CategoriaTableAdapter ta = new CategoriaTableAdapter();
-
+            ProdutoTableAdapter ta = new ProdutoTableAdapter();
             bExcluir = (ta.Delete(nCodGenerico) > 0);
 
             return bExcluir;

@@ -28,7 +28,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
             btnCancelar_Click(null, null); // para limpar informações pré existentes no formulário
             CarregaGridItens();
             PedidoTableAdapter taPedido = new PedidoTableAdapter();
-            vld_VendaAtual = (int)taPedido.UltimoPedido().Rows[0][""] + 1;
+            vld_VendaAtual = Convert.ToInt32(taPedido.UltimoPedido().Rows[0]["UltimoID"]) + 1;
             lblN.Text = vld_VendaAtual.ToString();
             grbPedido.Enabled = true;
             grbItens.Enabled = true;
@@ -76,7 +76,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
             taPedido.Insert(int.Parse(cmbCliente.SelectedValue.ToString()),
                 dtpDataVenda.Value, decimal.Parse(vTotalDoPedido.ToString()), "V",
                 txtObservacao.Text);
-            vld_VendaAtual = (int)taPedido.UltimoPedido().Rows[0]["UltimoID"];
+            vld_VendaAtual = Convert.ToInt32(taPedido.UltimoPedido().Rows[0]["UltimoID"]);
             // —————————————————————————————————————————————————————————————————————
 
             // Gravando os itens
@@ -112,8 +112,8 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
 
         private void CarregaGridItens()
         {
-            Item_TempTableAdapter taItemTemp = new Item_TempTableAdapter();
-            dgvItem.DataSource = taItemTemp.GetData();
+            item_TempTableAdapter.Fill(this.dataSet_Dados_do_Banco.Item_Temp);
+            dgvItem.Refresh();
         }
 
         private void Limpa_Campos_Item()
@@ -127,6 +127,8 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
 
         private void frmCadVendas_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataSet_Dados_do_Banco.Item_Temp' table. You can move, or remove it, as needed.
+            this.item_TempTableAdapter.Fill(this.dataSet_Dados_do_Banco.Item_Temp);
             // TODO: This line of code loads data into the 'dataSet_Dados_do_Banco.Cliente' table. You can move, or remove it, as needed.
             this.clienteTableAdapter.Fill(this.dataSet_Dados_do_Banco.Cliente);
             vUsuario = Properties.Settings.Default.NomeUsuarioLogado.ToString();
@@ -146,26 +148,28 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
 
         private void txtCodigo_Leave(object sender, EventArgs e)
         {
-            if (txtCodigo.Text != "")
-            {
-                ProdutoTableAdapter taProduto = new ProdutoTableAdapter();
-                DataSet_Dados_do_Banco.ProdutoDataTable dtProduto = new DataSet_Dados_do_Banco.ProdutoDataTable();
-
-                dtProduto = (DataSet_Dados_do_Banco.ProdutoDataTable)taProduto.Procura_Produto(int.Parse(txtCodigo.Text));
-
-                if (dtProduto.Rows.Count == 0)
+            
+                if (txtCodigo.Text != "")
                 {
-                    MessageBox.Show("Código não cadastrado");
-                    txtCodigo.Focus();
+                    ProdutoTableAdapter taProduto = new ProdutoTableAdapter();
+                    DataSet_Dados_do_Banco.ProdutoDataTable dtProduto = new DataSet_Dados_do_Banco.ProdutoDataTable();
+
+                    dtProduto = taProduto.Procura_Produto1(int.Parse(txtCodigo.Text));
+
+                    if (dtProduto.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Código não cadastrado");
+                        txtCodigo.Focus();
+                    }
+                    else
+                    {
+                        lblDescricaoProduto.Text = dtProduto.Rows[0]["pro_Descricao"].ToString();
+                        txtValorUnit.Text = dtProduto.Rows[0]["pro_Valor"].ToString();
+                        vSaldoAtual = (int)dtProduto.Rows[0]["pro_QtdeEstoque"];
+                        txtQtdVenda.Focus();
+                    }
                 }
-                else
-                {
-                    lblDescricaoProduto.Text = dtProduto.Rows[0]["pro_Descricao"].ToString();
-                    txtValorUnit.Text = dtProduto.Rows[0]["pro_Valor"].ToString();
-                    vSaldoAtual = (int)dtProduto.Rows[0]["pro_QtdeEstoque"];
-                    txtQtdVenda.Focus();
-                }
-            }
+            
         }
 
         private void frmCadVendas_KeyDown(object sender, KeyEventArgs e)
@@ -217,7 +221,8 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
 
         private void txtValorUnit_Leave(object sender, EventArgs e)
         {
-            vValorUnitDigitado = Convert.ToDouble(txtValorUnit.Text);
+            double a;
+            vValorUnitDigitado =  double.TryParse(txtValorUnit.Text, out a) ? Convert.ToDouble(txtValorUnit.Text): 0;
             vValorTotalProduto = vQuantidadeDigitada * vValorUnitDigitado;
             lblTotalProduto.Text = (vValorTotalProduto).ToString("###,##0.00");
             btnAdicionarItem.Focus();

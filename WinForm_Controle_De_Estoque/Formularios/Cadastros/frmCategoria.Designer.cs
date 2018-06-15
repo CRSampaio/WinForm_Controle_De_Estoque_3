@@ -61,6 +61,7 @@
             // 
             // txtCodigo
             // 
+            this.txtCodigo.Enabled = false;
             this.txtCodigo.Location = new System.Drawing.Point(131, 36);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(48, 20);
@@ -96,7 +97,7 @@
             // frmCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(711, 477);
+            this.ClientSize = new System.Drawing.Size(711, 491);
             this.Name = "frmCategoria";
             this.Text = "Categoria";
             ((System.ComponentModel.ISupportInitialize)(this.dtGenerico)).EndInit();

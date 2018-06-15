@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dados\DataSet_Dados_do_Banco.cs">
+      <DependentUpon>DataSet_Dados_do_Banco.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Dados\DataSet_Dados_do_Banco.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

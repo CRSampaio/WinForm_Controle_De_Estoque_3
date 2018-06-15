@@ -165,8 +165,8 @@ namespace WinForm_Controle_De_Estoque.Formularios.Modelos
             {
                 this.Height = this.Height + grbPesquisa.Height;
                 grbPesquisa.Visible = true;
-                cmbColuna.SelectedIndex = -1;
-                cmbBuscar.SelectedIndex = -1;
+                cmbColuna.SelectedIndex = 0;
+                cmbBuscar.SelectedIndex = 0;
                 txtParametro1.Text = "1";
                 cmbColuna.Focus();
                 txtParametro1.Text = "";

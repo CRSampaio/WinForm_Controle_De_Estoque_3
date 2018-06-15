@@ -42,6 +42,8 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtObservacao = new System.Windows.Forms.RichTextBox();
             this.cmbCliente = new System.Windows.Forms.ComboBox();
+            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet_Dados_do_Banco = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_Banco();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnBuscarProduto = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
@@ -52,11 +54,7 @@
             this.btnAdicionarItem = new System.Windows.Forms.Button();
             this.btnRemoverItem = new System.Windows.Forms.Button();
             this.dgvItem = new System.Windows.Forms.DataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemTempBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtQtdVenda = new System.Windows.Forms.TextBox();
             this.txtValorUnit = new System.Windows.Forms.TextBox();
             this.grbPedido = new System.Windows.Forms.GroupBox();
@@ -70,16 +68,21 @@
             this.txtNumPedidoPesq = new System.Windows.Forms.TextBox();
             this.ErrErro = new System.Windows.Forms.ErrorProvider(this.components);
             this.categoriaTableAdapter1 = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.CategoriaTableAdapter();
-            this.dataSet_Dados_do_Banco = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_Banco();
-            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clienteTableAdapter = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.ClienteTableAdapter();
+            this.item_TempTableAdapter = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.Item_TempTableAdapter();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_do_Banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemTempBindingSource)).BeginInit();
             this.grbPedido.SuspendLayout();
             this.grbItens.SuspendLayout();
             this.grbPesquisaPedido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrErro)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_do_Banco)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lblN
@@ -210,6 +213,16 @@
             this.cmbCliente.TabIndex = 12;
             this.cmbCliente.ValueMember = "cli_Id";
             // 
+            // clienteBindingSource
+            // 
+            this.clienteBindingSource.DataMember = "Cliente";
+            this.clienteBindingSource.DataSource = this.dataSet_Dados_do_Banco;
+            // 
+            // dataSet_Dados_do_Banco
+            // 
+            this.dataSet_Dados_do_Banco.DataSetName = "DataSet_Dados_do_Banco";
+            this.dataSet_Dados_do_Banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(475, 57);
@@ -301,6 +314,9 @@
             // 
             // dgvItem
             // 
+            this.dgvItem.AllowUserToAddRows = false;
+            this.dgvItem.AllowUserToDeleteRows = false;
+            this.dgvItem.AutoGenerateColumns = false;
             this.dgvItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
@@ -308,40 +324,17 @@
             this.Quantidade,
             this.Unitario,
             this.TotalItem});
+            this.dgvItem.DataSource = this.itemTempBindingSource;
             this.dgvItem.Location = new System.Drawing.Point(6, 61);
             this.dgvItem.Name = "dgvItem";
+            this.dgvItem.ReadOnly = true;
             this.dgvItem.Size = new System.Drawing.Size(544, 129);
             this.dgvItem.TabIndex = 23;
             // 
-            // Codigo
+            // itemTempBindingSource
             // 
-            this.Codigo.HeaderText = "Código";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            // 
-            // Descricao
-            // 
-            this.Descricao.HeaderText = "Descrição";
-            this.Descricao.Name = "Descricao";
-            this.Descricao.ReadOnly = true;
-            // 
-            // Quantidade
-            // 
-            this.Quantidade.HeaderText = "Quantidade";
-            this.Quantidade.Name = "Quantidade";
-            this.Quantidade.ReadOnly = true;
-            // 
-            // Unitario
-            // 
-            this.Unitario.HeaderText = "$ Unitário";
-            this.Unitario.Name = "Unitario";
-            this.Unitario.ReadOnly = true;
-            // 
-            // TotalItem
-            // 
-            this.TotalItem.HeaderText = "Total Item";
-            this.TotalItem.Name = "TotalItem";
-            this.TotalItem.ReadOnly = true;
+            this.itemTempBindingSource.DataMember = "Item_Temp";
+            this.itemTempBindingSource.DataSource = this.dataSet_Dados_do_Banco;
             // 
             // txtQtdVenda
             // 
@@ -464,19 +457,48 @@
             // 
             this.categoriaTableAdapter1.ClearBeforeFill = true;
             // 
-            // dataSet_Dados_do_Banco
-            // 
-            this.dataSet_Dados_do_Banco.DataSetName = "DataSet_Dados_do_Banco";
-            this.dataSet_Dados_do_Banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // clienteBindingSource
-            // 
-            this.clienteBindingSource.DataMember = "Cliente";
-            this.clienteBindingSource.DataSource = this.dataSet_Dados_do_Banco;
-            // 
             // clienteTableAdapter
             // 
             this.clienteTableAdapter.ClearBeforeFill = true;
+            // 
+            // item_TempTableAdapter
+            // 
+            this.item_TempTableAdapter.ClearBeforeFill = true;
+            // 
+            // Codigo
+            // 
+            this.Codigo.DataPropertyName = "pro_Id";
+            this.Codigo.HeaderText = "Código";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
+            // Descricao
+            // 
+            this.Descricao.DataPropertyName = "pro_Descricao";
+            this.Descricao.HeaderText = "Descrição";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
+            // 
+            // Quantidade
+            // 
+            this.Quantidade.DataPropertyName = "Ite_Qtde";
+            this.Quantidade.HeaderText = "Quantidade";
+            this.Quantidade.Name = "Quantidade";
+            this.Quantidade.ReadOnly = true;
+            // 
+            // Unitario
+            // 
+            this.Unitario.DataPropertyName = "Ite_Valor";
+            this.Unitario.HeaderText = "$ Unitário";
+            this.Unitario.Name = "Unitario";
+            this.Unitario.ReadOnly = true;
+            // 
+            // TotalItem
+            // 
+            this.TotalItem.DataPropertyName = "valTotal";
+            this.TotalItem.HeaderText = "Total Item";
+            this.TotalItem.Name = "TotalItem";
+            this.TotalItem.ReadOnly = true;
             // 
             // frmCadVendas
             // 
@@ -498,7 +520,10 @@
             this.Text = "Lançamento de Vendas";
             this.Load += new System.EventHandler(this.frmCadVendas_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadVendas_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_do_Banco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemTempBindingSource)).EndInit();
             this.grbPedido.ResumeLayout(false);
             this.grbPedido.PerformLayout();
             this.grbItens.ResumeLayout(false);
@@ -506,8 +531,6 @@
             this.grbPesquisaPedido.ResumeLayout(false);
             this.grbPesquisaPedido.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrErro)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_do_Banco)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -547,11 +570,6 @@
         private System.Windows.Forms.Label lblTotalPedido;
         private System.Windows.Forms.Label lblTotalProduto;
         private System.Windows.Forms.Label lblDescricaoProduto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Unitario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TotalItem;
         private System.Windows.Forms.GroupBox grbPesquisaPedido;
         private System.Windows.Forms.TextBox txtNumPedidoPesq;
         private System.Windows.Forms.ErrorProvider ErrErro;
@@ -559,5 +577,12 @@
         private Dados.DataSet_Dados_do_Banco dataSet_Dados_do_Banco;
         private System.Windows.Forms.BindingSource clienteBindingSource;
         private Dados.DataSet_Dados_do_BancoTableAdapters.ClienteTableAdapter clienteTableAdapter;
+        private System.Windows.Forms.BindingSource itemTempBindingSource;
+        private Dados.DataSet_Dados_do_BancoTableAdapters.Item_TempTableAdapter item_TempTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unitario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalItem;
     }
 }

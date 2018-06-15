@@ -41,6 +41,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
 
                 }
                 dtGenerico = ds.Categoria;
+                dgvGrid.DataSource = dataSetDadosDoBancoBindingSource;
             }
             catch (Exception ex)
             {
@@ -51,8 +52,8 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
         {
             try
             {
-                //txtCodigo.Text = dgvGrid.CurrentRow.Cells[0].Value.ToString();
-                //txtNome.Text = dgvGrid.CurrentRow.Cells["cat_Descricao"].Value.ToString();
+                txtCodigo.Text = dgvGrid.CurrentRow.Cells[0].Value.ToString();
+                txtNome.Text = dgvGrid.CurrentRow.Cells["cat_Descricao"].Value.ToString();
             }
             catch (Exception ex)
             {
