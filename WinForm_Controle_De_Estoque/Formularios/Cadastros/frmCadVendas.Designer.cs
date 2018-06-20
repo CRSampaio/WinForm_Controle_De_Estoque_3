@@ -73,7 +73,7 @@
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor_Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_do_Banco)).BeginInit();
@@ -316,15 +316,13 @@
             // 
             this.dgvItem.AllowUserToAddRows = false;
             this.dgvItem.AllowUserToDeleteRows = false;
-            this.dgvItem.AutoGenerateColumns = false;
             this.dgvItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
             this.Descricao,
             this.Quantidade,
-            this.Unitario,
+            this.Valor_Unit,
             this.TotalItem});
-            this.dgvItem.DataSource = this.itemTempBindingSource;
             this.dgvItem.Location = new System.Drawing.Point(6, 61);
             this.dgvItem.Name = "dgvItem";
             this.dgvItem.ReadOnly = true;
@@ -486,12 +484,12 @@
             this.Quantidade.Name = "Quantidade";
             this.Quantidade.ReadOnly = true;
             // 
-            // Unitario
+            // Valor_Unit
             // 
-            this.Unitario.DataPropertyName = "Ite_Valor";
-            this.Unitario.HeaderText = "$ Unitário";
-            this.Unitario.Name = "Unitario";
-            this.Unitario.ReadOnly = true;
+            this.Valor_Unit.DataPropertyName = "Ite_Valor";
+            this.Valor_Unit.HeaderText = "$ Unitário";
+            this.Valor_Unit.Name = "Valor_Unit";
+            this.Valor_Unit.ReadOnly = true;
             // 
             // TotalItem
             // 
@@ -582,7 +580,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Unitario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valor_Unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalItem;
     }
 }
