@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinForm_Controle_De_Estoque.Dados;
 using WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters;
+using static WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_Banco;
 
 namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
 {
@@ -33,6 +34,8 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
             grbPedido.Enabled = true;
             grbItens.Enabled = true;
             btnGravar.Enabled = true;
+            cmbCliente.Enabled = true;
+            txtObservacao.Enabled = true;
             btnNovo.Enabled = false;
             btnCancelar.Visible = true;
             cmbCliente.Focus();
@@ -106,14 +109,17 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
             grbPedido.Enabled = false;
             grbItens.Enabled = false;
             btnGravar.Enabled = false;
+            cmbCliente.Enabled = false;
+            txtObservacao.Enabled = false;
             btnNovo.Enabled = true;
             btnCancelar.Enabled = false;
         }
 
         private void CarregaGridItens()
         {
-            item_TempTableAdapter.Fill(this.dataSet_Dados_do_Banco.Item_Temp);
-            dgvItem.Refresh();
+            //item_TempTableAdapter.Fill(this.dataSet_Dados_do_Banco.Item_Temp);
+            Item_TempTableAdapter taItemTemp = new Item_TempTableAdapter();
+            dgvItem.DataSource = taItemTemp.GetData();
         }
 
         private void Limpa_Campos_Item()
@@ -132,6 +138,8 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
             // TODO: This line of code loads data into the 'dataSet_Dados_do_Banco.Cliente' table. You can move, or remove it, as needed.
             this.clienteTableAdapter.Fill(this.dataSet_Dados_do_Banco.Cliente);
             vUsuario = Properties.Settings.Default.NomeUsuarioLogado.ToString();
+            btnCancelar_Click(null, null);
+            btnPesquisar_Click(null, null);
         }
 
         private void txtQtdVenda_Leave(object sender, EventArgs e)
@@ -205,12 +213,46 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
             Limpa_Campos_Pedido();
             grbPedido.Enabled = false;
             grbItens.Enabled = false;
+            cmbCliente.Enabled = false;
+            txtObservacao.Enabled = false;
             btnGravar.Enabled = false;
             btnCancelar.Visible = false;
             btnNovo.Enabled = true;
             // Limpa os itens da tabela temp
             Item_TempTableAdapter taItem_Temp = new Item_TempTableAdapter();
             taItem_Temp.Limpa_Itens(vld_VendaAtual, vUsuario);
+        }
+
+        private void btnLocalizaPedido_Click(object sender, EventArgs e)
+        {
+            PedidoTableAdapter taPedido = new PedidoTableAdapter();
+            DataSet_Dados_do_Banco.PedidoDataTable dt = new DataSet_Dados_do_Banco.PedidoDataTable();
+            dt = taPedido.PesquisaPedido(int.Parse(txtNumPedidoPesq.Text));
+            if(dt.Rows.Count == 0)
+            {
+                MessageBox.Show("Pedido inexistente");
+                txtNumPedidoPesq.Focus();
+                txtNumPedidoPesq.SelectAll();
+            }
+            else
+            {
+                lblNumeroPedido.Text = dt.Rows[0]["ped_id"].ToString();
+                cmbCliente.SelectedValue = dt.Rows[0]["cli_id"];
+                dtpDataVenda.Value = DateTime.Parse(dt.Rows[0]["ped_dtEncomenda"].ToString());
+                lblTotalPedido.Text = String.Format(dt.Rows[0]["ped_valor"].ToString(), "###,##0.00");
+                txtObservacao.Text = dt.Rows[0]["Ped_observacao"].ToString();
+                //if (dt.Rows[0]["ped_id"].ToString() == "")
+                //TODO lblStatus
+                ItemTableAdapter taItem = new ItemTableAdapter();
+                ItemDataTable dtItem = new ItemDataTable();
+                dtItem = taItem.Pesquisa_Itens_Pedido(int.Parse(txtNumPedidoPesq.Text));
+                dgvItem.DataSource = dtItem;
+                dgvItem.Columns["Codigo"].DisplayIndex = 0;
+                dgvItem.Columns["Descricao"].DisplayIndex = 1;
+                dgvItem.Columns["Quantidade"].DisplayIndex = 2;
+                dgvItem.Columns["Valor_Unit"].DisplayIndex = 3;
+                dgvItem.Columns["TotalItem"].DisplayIndex = 4;
+            }
         }
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

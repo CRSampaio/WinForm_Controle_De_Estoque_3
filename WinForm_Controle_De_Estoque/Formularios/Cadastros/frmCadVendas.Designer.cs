@@ -54,6 +54,11 @@
             this.btnAdicionarItem = new System.Windows.Forms.Button();
             this.btnRemoverItem = new System.Windows.Forms.Button();
             this.dgvItem = new System.Windows.Forms.DataGridView();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor_Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemTempBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtQtdVenda = new System.Windows.Forms.TextBox();
             this.txtValorUnit = new System.Windows.Forms.TextBox();
@@ -70,11 +75,6 @@
             this.categoriaTableAdapter1 = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.CategoriaTableAdapter();
             this.clienteTableAdapter = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.ClienteTableAdapter();
             this.item_TempTableAdapter = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.Item_TempTableAdapter();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor_Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet_Dados_do_Banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItem)).BeginInit();
@@ -291,6 +291,7 @@
             this.btnLocalizaPedido.TabIndex = 20;
             this.btnLocalizaPedido.Text = "Localizar";
             this.btnLocalizaPedido.UseVisualStyleBackColor = true;
+            this.btnLocalizaPedido.Click += new System.EventHandler(this.btnLocalizaPedido_Click);
             // 
             // btnAdicionarItem
             // 
@@ -328,6 +329,41 @@
             this.dgvItem.ReadOnly = true;
             this.dgvItem.Size = new System.Drawing.Size(544, 129);
             this.dgvItem.TabIndex = 23;
+            // 
+            // Codigo
+            // 
+            this.Codigo.DataPropertyName = "pro_Id";
+            this.Codigo.HeaderText = "Código";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
+            // Descricao
+            // 
+            this.Descricao.DataPropertyName = "pro_Descricao";
+            this.Descricao.HeaderText = "Descrição";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
+            // 
+            // Quantidade
+            // 
+            this.Quantidade.DataPropertyName = "Ite_Qtde";
+            this.Quantidade.HeaderText = "Quantidade";
+            this.Quantidade.Name = "Quantidade";
+            this.Quantidade.ReadOnly = true;
+            // 
+            // Valor_Unit
+            // 
+            this.Valor_Unit.DataPropertyName = "Ite_Valor";
+            this.Valor_Unit.HeaderText = "$ Unitário";
+            this.Valor_Unit.Name = "Valor_Unit";
+            this.Valor_Unit.ReadOnly = true;
+            // 
+            // TotalItem
+            // 
+            this.TotalItem.DataPropertyName = "valTotal";
+            this.TotalItem.HeaderText = "Total Item";
+            this.TotalItem.Name = "TotalItem";
+            this.TotalItem.ReadOnly = true;
             // 
             // itemTempBindingSource
             // 
@@ -462,41 +498,6 @@
             // item_TempTableAdapter
             // 
             this.item_TempTableAdapter.ClearBeforeFill = true;
-            // 
-            // Codigo
-            // 
-            this.Codigo.DataPropertyName = "pro_Id";
-            this.Codigo.HeaderText = "Código";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            // 
-            // Descricao
-            // 
-            this.Descricao.DataPropertyName = "pro_Descricao";
-            this.Descricao.HeaderText = "Descrição";
-            this.Descricao.Name = "Descricao";
-            this.Descricao.ReadOnly = true;
-            // 
-            // Quantidade
-            // 
-            this.Quantidade.DataPropertyName = "Ite_Qtde";
-            this.Quantidade.HeaderText = "Quantidade";
-            this.Quantidade.Name = "Quantidade";
-            this.Quantidade.ReadOnly = true;
-            // 
-            // Valor_Unit
-            // 
-            this.Valor_Unit.DataPropertyName = "Ite_Valor";
-            this.Valor_Unit.HeaderText = "$ Unitário";
-            this.Valor_Unit.Name = "Valor_Unit";
-            this.Valor_Unit.ReadOnly = true;
-            // 
-            // TotalItem
-            // 
-            this.TotalItem.DataPropertyName = "valTotal";
-            this.TotalItem.HeaderText = "Total Item";
-            this.TotalItem.Name = "TotalItem";
-            this.TotalItem.ReadOnly = true;
             // 
             // frmCadVendas
             // 
