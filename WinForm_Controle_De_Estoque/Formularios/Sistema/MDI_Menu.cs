@@ -183,7 +183,7 @@ namespace WinForm_Controle_De_Estoque
         }
         private void internetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("IExplorer.exe", "www.terra.com.br");
+            System.Diagnostics.Process.Start("C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe", "www.terra.com.br");
         }
         private void cascataToolStripMenuItem_Click(object sender, EventArgs e)
         {

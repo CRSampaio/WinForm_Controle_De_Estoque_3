@@ -155,3 +155,4 @@ C:\Users\Manutencao\Documents\GitHub\WinForm_Controle_De_Estoque_3\WinForm_Contr
 C:\Users\Manutencao\Documents\GitHub\WinForm_Controle_De_Estoque_3\WinForm_Controle_De_Estoque\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
 C:\Users\Manutencao\Documents\GitHub\WinForm_Controle_De_Estoque_3\WinForm_Controle_De_Estoque\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
 C:\Users\Manutencao\Documents\GitHub\WinForm_Controle_De_Estoque_3\WinForm_Controle_De_Estoque\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ManutencaoEtec\Desktop\WinForm_Controle_De_Estoque_3\WinForm_Controle_De_Estoque\obj\Debug\WinForm_Controle_De_Estoque.Formularios.Cadastros.FrmCadCliente.resources
