@@ -121,13 +121,19 @@
   <data name="indonesia-blue-mountain" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Dados\indonesia-blue-mountain.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="login238" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Dados\login238.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Lupa26" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Dados\Algumas Imagens\Lupa26.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="login238" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Dados\login238.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Aventura_1151_binoculo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Dados\Algumas Imagens\Aventura_1151_binoculo2.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reactjs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reactjs.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Splash Screen1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Splash Screen1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

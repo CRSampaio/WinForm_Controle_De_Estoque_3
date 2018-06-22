@@ -185,7 +185,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\reactjs.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Dados\indonesia-blue-mountain.jpg" />
   </ItemGroup>
@@ -197,6 +199,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Dados\Algumas Imagens\Aventura_1151_binoculo2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Splash Screen1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
