@@ -57,7 +57,7 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "WinForm_Controle_De_Estoque.Relatorios.Relatorio_Cliente.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(478, 301);
+            this.reportViewer1.Size = new System.Drawing.Size(750, 386);
             this.reportViewer1.TabIndex = 0;
             // 
             // clienteTableAdapter
@@ -68,10 +68,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 301);
+            this.ClientSize = new System.Drawing.Size(750, 386);
             this.Controls.Add(this.reportViewer1);
             this.Name = "frmVisualizaRelatorio";
-            this.Text = "frmVisualizaRelatorio";
+            this.Text = "Relatório";
             this.Load += new System.EventHandler(this.frmVisualizaRelatorio_Load);
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.db_05579_1_C_1_2017DataSet)).EndInit();
