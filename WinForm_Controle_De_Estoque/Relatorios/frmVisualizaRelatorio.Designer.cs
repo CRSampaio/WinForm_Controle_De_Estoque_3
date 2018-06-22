@@ -30,13 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.db_05579_1_C_1_2017DataSet = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_Banco();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.db_05579_1_C_1_2017DataSet = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_Banco();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.clienteTableAdapter = new WinForm_Controle_De_Estoque.Dados.DataSet_Dados_do_BancoTableAdapters.ClienteTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.db_05579_1_C_1_2017DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.db_05579_1_C_1_2017DataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // clienteBindingSource
+            // 
+            this.clienteBindingSource.DataMember = "Cliente";
+            this.clienteBindingSource.DataSource = this.db_05579_1_C_1_2017DataSet;
+            // 
+            // db_05579_1_C_1_2017DataSet
+            // 
+            this.db_05579_1_C_1_2017DataSet.DataSetName = "db_05579_1_C_1_2017DataSet";
+            this.db_05579_1_C_1_2017DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -50,16 +60,6 @@
             this.reportViewer1.Size = new System.Drawing.Size(478, 301);
             this.reportViewer1.TabIndex = 0;
             // 
-            // db_05579_1_C_1_2017DataSet
-            // 
-            this.db_05579_1_C_1_2017DataSet.DataSetName = "db_05579_1_C_1_2017DataSet";
-            this.db_05579_1_C_1_2017DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // clienteBindingSource
-            // 
-            this.clienteBindingSource.DataMember = "Cliente";
-            this.clienteBindingSource.DataSource = this.db_05579_1_C_1_2017DataSet;
-            // 
             // clienteTableAdapter
             // 
             this.clienteTableAdapter.ClearBeforeFill = true;
@@ -72,10 +72,9 @@
             this.Controls.Add(this.reportViewer1);
             this.Name = "frmVisualizaRelatorio";
             this.Text = "frmVisualizaRelatorio";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmVisualizaRelatorio_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.db_05579_1_C_1_2017DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.db_05579_1_C_1_2017DataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
