@@ -37,7 +37,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Modelos
                     (ctr as TextBox).Text = "";
 
                 if (ctr is ComboBox)
-                    (ctr as ComboBox).SelectedIndex = -1;
+                    (ctr as ComboBox).SelectedIndex = 0;
 
                 if (ctr is ListBox)
                     (ctr as ListBox).SelectedIndex = -1;
@@ -95,7 +95,6 @@ namespace WinForm_Controle_De_Estoque.Formularios.Modelos
 
         private void btnIncluir_Click(object sender, EventArgs e)
         {
-            LimpaControles();
             sStatus = StatusCadastro.scIncluindo;
             lblModo.Text = "Incluindo";
             HabilitaDesabilitaControles(true);
@@ -180,67 +179,74 @@ namespace WinForm_Controle_De_Estoque.Formularios.Modelos
 
         private void btnLocalizar_Click(object sender, EventArgs e)
         {
-            string vFiltro = "", vOperacao = " = ", vCampo = "";
-
-            if (cmbBuscar.Text == "Todos")
-                cmbColuna.SelectedIndex = -1;
-            else if (cmbColuna.SelectedIndex == -1 || cmbBuscar.SelectedIndex == -1)
+            try
             {
-                MessageBox.Show("Informe os parâmetros corretamente");
-                return;
-            }
+                string vFiltro = "", vOperacao = " = ", vCampo = "";
 
-            // Definindo a operação
-            if (cmbBuscar.Text == "Igual a")
-                vOperacao = " = ";
-            else if (cmbBuscar.Text == "Maior que")
-                vOperacao = " > ";
-            else if (cmbBuscar.Text == "Menor que")
-                vOperacao = " < ";
-            else if (cmbBuscar.Text == "Maior ou igual a")
-                vOperacao = " >= ";
-            else if (cmbBuscar.Text == "Menor ou igual a")
-                vOperacao = " <= ";
-            else if (cmbBuscar.Text == "Diferente de")
-                vOperacao = " <> ";
+                if (cmbBuscar.Text == "Todos")
+                    cmbColuna.SelectedIndex = -1;
+                else if (cmbColuna.SelectedIndex == -1 || cmbBuscar.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Informe os parâmetros corretamente");
+                    return;
+                }
 
-            // elimina apóstrofos caso existam
-            txtParametro1.Text = txtParametro1.Text.Replace(" ", "");
-            txtParametro2.Text = txtParametro2.Text.Replace(" ", "");
-            if (cmbBuscar.Text == "Todos")
-            {
-                vFiltro = "";
+                // Definindo a operação
+                if (cmbBuscar.Text == "Igual a")
+                    vOperacao = " = ";
+                else if (cmbBuscar.Text == "Maior que")
+                    vOperacao = " > ";
+                else if (cmbBuscar.Text == "Menor que")
+                    vOperacao = " < ";
+                else if (cmbBuscar.Text == "Maior ou igual a")
+                    vOperacao = " >= ";
+                else if (cmbBuscar.Text == "Menor ou igual a")
+                    vOperacao = " <= ";
+                else if (cmbBuscar.Text == "Diferente de")
+                    vOperacao = " <> ";
+
+                // elimina apóstrofos caso existam
+                txtParametro1.Text = txtParametro1.Text.Replace(" ", "");
+                txtParametro2.Text = txtParametro2.Text.Replace(" ", "");
+                if (cmbBuscar.Text == "Todos")
+                {
+                    vFiltro = "";
+                }
+                else
+                {
+                    vCampo = cmbColuna.Text;
+                    vFiltro = vCampo;
+                    if (dtGenerico.Columns[cmbColuna.SelectedIndex].DataType.Name == "String")
+                    {
+                        if (cmbBuscar.Text == "Que começa com")
+                            vFiltro = vFiltro + " like " + txtParametro1.Text + "%'";
+                        else if (cmbBuscar.Text == "Que contém")
+                            vFiltro = vFiltro + " like '%" + txtParametro1.Text + "%'";
+                        else
+                            vFiltro = vFiltro + vOperacao + "'" + txtParametro1.Text + "'";
+                    }
+                    else if (dtGenerico.Columns[cmbColuna.SelectedIndex].DataType.Name == "Int32")
+                    {
+                        if (cmbBuscar.Text == "Que esteja entre")
+                            vFiltro = vFiltro + " >= " + txtParametro1.Text + " and " + vCampo + " <= " + txtParametro2.Text;
+                        else
+                            vFiltro = vFiltro + vOperacao + txtParametro1.Text;
+                    }
+                    else if (dtGenerico.Columns[cmbColuna.SelectedIndex].DataType.Name == "DateTime")
+                    {
+                        if (cmbBuscar.Text == "Que esteja entre")
+                            vFiltro = vFiltro + " >= " + txtParametro1.Text + " and " + vCampo + " <= " + txtParametro2.Text + "";
+                        else
+                            vFiltro = vFiltro + vOperacao + "" + txtParametro1.Text + "";
+                    }
+                }
+                dataSetDadosDoBancoBindingSource.RemoveFilter();
+                dataSetDadosDoBancoBindingSource.Filter = vFiltro;
             }
-            else
+            catch (Exception ex)
             {
-                vCampo = cmbColuna.Text;
-                vFiltro = vCampo;
-                if (dtGenerico.Columns[cmbColuna.SelectedIndex].DataType.Name == "String")
-                {
-                    if (cmbBuscar.Text == "Que começa com")
-                        vFiltro = vFiltro + " like " + txtParametro1.Text + "%'";
-                    else if (cmbBuscar.Text == "Que contém")
-                        vFiltro = vFiltro + " like '%" + txtParametro1.Text + "%'";
-                    else
-                        vFiltro = vFiltro + vOperacao + "'" + txtParametro1.Text + "'";
-                }
-                else if (dtGenerico.Columns[cmbColuna.SelectedIndex].DataType.Name == "Int32")
-                {
-                    if (cmbBuscar.Text == "Que esteja entre")
-                        vFiltro = vFiltro + " >= " + txtParametro1.Text + " and " + vCampo + " <= " + txtParametro2.Text;
-                    else
-                        vFiltro = vFiltro + vOperacao + txtParametro1.Text;
-                }
-                else if (dtGenerico.Columns[cmbColuna.SelectedIndex].DataType.Name == "DateTime")
-                {
-                    if (cmbBuscar.Text == "Que esteja entre")
-                        vFiltro = vFiltro + " >= " + txtParametro1.Text + " and " + vCampo + " <= " + txtParametro2.Text + "";
-                    else
-                        vFiltro = vFiltro + vOperacao + "" + txtParametro1.Text + "";
-                }
+                MessageBox.Show(ex.Message);
             }
-            dataSetDadosDoBancoBindingSource.RemoveFilter();
-            dataSetDadosDoBancoBindingSource.Filter = vFiltro;
         }
 
         private void frmBase_Load(object sender, EventArgs e)

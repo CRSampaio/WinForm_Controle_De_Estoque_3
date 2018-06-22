@@ -146,9 +146,15 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
         public override bool Excluir()
         {
             bool bExcluir = false;
-            ProdutoTableAdapter ta = new ProdutoTableAdapter();
-            bExcluir = (ta.Delete(nCodGenerico) > 0);
-
+            try
+            {
+                ProdutoTableAdapter ta = new ProdutoTableAdapter();
+                bExcluir = (ta.Delete(nCodGenerico) > 0);
+            }
+            catch (Exception)
+            {
+                bExcluir = false;
+            }
             return bExcluir;
         }
 

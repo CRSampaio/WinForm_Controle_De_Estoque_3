@@ -77,8 +77,15 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
         public override bool Excluir()
         {
             bool bExcluir = false;
-            CategoriaTableAdapter ta = new CategoriaTableAdapter();
-            bExcluir = (ta.Delete(nCodGenerico) > 0);
+            try
+            {
+                CategoriaTableAdapter ta = new CategoriaTableAdapter();
+                bExcluir = (ta.Delete(nCodGenerico) > 0);
+            }
+            catch (Exception ex)
+            {
+                bExcluir = false;
+            }
             return bExcluir;
         }
         public void txtNome_Validating(object sender, CancelEventArgs e)
