@@ -30,7 +30,7 @@ namespace WinForm_Controle_De_Estoque.Formularios.Cadastros
             CarregaGridItens();
             PedidoTableAdapter taPedido = new PedidoTableAdapter();
             vld_VendaAtual = Convert.ToInt32(taPedido.UltimoPedido().Rows[0]["UltimoID"]) + 1;
-            lblN.Text = vld_VendaAtual.ToString();
+            lblNumeroPedido.Text = vld_VendaAtual.ToString();
             grbPedido.Enabled = true;
             grbItens.Enabled = true;
             btnGravar.Enabled = true;
